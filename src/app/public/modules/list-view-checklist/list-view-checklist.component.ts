@@ -11,10 +11,18 @@ import {
   OnChanges
 } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import {
+  Observable
+} from 'rxjs/Observable';
+
+import {
+  Subject
+} from 'rxjs/Subject';
+
 import 'rxjs/add/operator/takeUntil';
+
 import 'rxjs/add/operator/distinctUntilChanged';
+
 import 'rxjs/add/operator/take';
 
 import {
@@ -39,8 +47,17 @@ import {
   ListSelectedSetItemSelectedAction,
   ListSelectedSetItemsSelectedAction,
   ListToolbarItemModel,
-  ListToolbarSetTypeAction
+  ListToolbarSetTypeAction,
+  SkyListViewType
 } from '@skyux/list-builder/modules/list/state';
+
+import {
+  getData
+} from '@skyux/list-builder-common';
+
+import {
+  SkyCheckboxChange
+} from '@skyux/forms';
 
 import {
   ChecklistState,
@@ -55,12 +72,6 @@ import {
 import {
   ListViewChecklistItemModel
 } from './state/items/item.model';
-
-import {
-  getData
-} from '@skyux/list-builder-common';
-
-import { SkyCheckboxChange } from '@skyux/forms';
 
 @Component({
   selector: 'sky-list-view-checklist',
@@ -129,7 +140,7 @@ export class SkyListViewChecklistComponent extends ListViewComponent implements 
     private checklistState: ChecklistState,
     private checklistDispatcher: ChecklistStateDispatcher
   ) {
-    super(state, 'Checklist View');
+    super(state, 'Checklist View', SkyListViewType.Checklist);
 
     let lastUpdate: any;
     Observable.combineLatest(
